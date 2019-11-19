@@ -1,6 +1,6 @@
 <template>
     <div id="body">
-    <b-container fluid>
+    <b-container fluidsss>
       <b-row id="row">
         <b-col>
 
