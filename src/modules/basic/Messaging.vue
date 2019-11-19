@@ -3,7 +3,7 @@
         <b-container>
             <b-row>
                 <!-- column 1 -->
-                <b-col>
+                <b-colss>
                     <center>
                         <h1>Recent Contacts: </h1>
                     </center>
