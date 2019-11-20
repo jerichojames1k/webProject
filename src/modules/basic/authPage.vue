@@ -10,19 +10,33 @@
                 <b>AUTHORIZATION LETTER</b>
               </b-card-text>
               <br />
-              <b-card-text id="senderName" class="center">[Sender's name]</b-card-text>
-              <b-card-text class="center">[Address]</b-card-text>
-              <b-card-text class="center">[State/ ZIP Code]</b-card-text>
+              <b-card-text id="senderName" class="center">
+                <p>{{UpdateSenderName}}</p>
+              </b-card-text>
+              <b-card-text class="center">
+                <p>{{UpdateyourAddress}}</p>
+              </b-card-text>
+              <b-card-text class="center">
+                <p>{{Updatezip}}</p>
+              </b-card-text>
               <br />
               <br />
 
-              <b-card-text>[Date]</b-card-text>
+              <b-card-text>
+                <p>{{UpdatecurrentDate}}</p>
+              </b-card-text>
               <br />
 
-              <b-card-text>[Recipient's name]</b-card-text>
-              <b-card-text>[Address]</b-card-text>
-              <b-card-text class="side">[State/ ZIP Code]</b-card-text>
-              <b-card-text class="side">[Subject]</b-card-text>
+              <b-card-text>
+                <p>{{UpdaterecName}}</p>
+              </b-card-text>
+              <b-card-text>{{UpdaterecAddress}}</b-card-text>
+              <b-card-text class="side">
+                <p>{{UpdaterecZip}}</p>
+              </b-card-text>
+              <b-card-text class="side">
+                <p>{{Updatesubject}}</p>
+              </b-card-text>
               <br />
 
               <b-card-text class="side">
@@ -36,13 +50,19 @@
               <b-card-text>Authorized Person: [Recipient's name]</b-card-text>
               <b-card-text>Identity Type: [Type of ID]</b-card-text>
               <b-card-text>ID Number: [ID number]</b-card-text>
-              <b-card-text>Scoped of Authorization: [Types of documents to be processed.]</b-card-text>
+              <b-card-text>
+                <p>Scoped of Authorization:{{Updatedoc}}</p>
+              </b-card-text>
               <b-card-text>The Permission to processes the documents in my name starts on ________________ and ends on ________________</b-card-text>
               <br />
 
               <b-card-text class="side">Sincerely,</b-card-text>
-              <b-card-text class="side">[Sender's Name]</b-card-text>
-              <b-card-text class="side">[Date Today]</b-card-text>
+              <b-card-text class="side">
+                <p>{{UpdateSenderName}}</p>
+              </b-card-text>
+              <b-card-text class="side">
+                <p>{{UpdatedueDate}}</p>
+              </b-card-text>
             </b-card>
           </div>
           <br />
@@ -78,7 +98,7 @@
           <b-form-input
             class="borderColor"
             id="yourName"
-            v-model="yourName"
+            v-model="SenderName"
             :state="nameState"
             required
             placeholder="Sender's Full Name"
@@ -279,16 +299,16 @@ export default {
     return {
       show: false,
       shows: false,
-      yourName: "",
-      yourAddress: "",
-      zip: "",
-      currentDate: "",
-      dueDate: "",
-      recName: "",
-      recAddress: "",
-      recZip: "",
-      subject: "",
-      doc: "",
+      UpdateSenderName:'[SenderName]',
+      UpdateyourAddress:'[Address]',
+      Updatezip:'[State/ ZIP Code]',
+      UpdatecurrentDate:'[Date]',
+      UpdatedueDate:'[DueDate]',
+      UpdaterecName:'[Recipients name]',
+      UpdaterecAddress:'[Address]',
+      UpdaterecZip:'[State/ ZIP Code]',
+      Updatesubject: "[Subject]",
+      Updatedoc:'[DOCS]',
       nameState: null,
       submittedNames: [],
       modalShow: false
@@ -299,12 +319,21 @@ export default {
     authorizationletter: function() {
       console.log(
         "{The modal is successfully tested!!!!!!!!authorization letter!!!!}"
-      );
+      );  
+     this.UpdateSenderName=this.SenderName,
+     this.UpdateyourAddress=this.yourAddress,
+     this.Updatezip=this.zip,
+     this.UpdatecurrentDate=this.currentDate,
+     this.UpdatedueDate=this.dueDate,
+     this.UpdaterecName =this.recName,
+     this.UpdaterecAddress=this.recAddress,
+     this.UpdaterecZip=this.recZip,
+     this.Updatesubject =this.subject,
+     this.Updatedoc=this.doc
     },
     SendToMessage: function() {
       console.log(
         "{The modal is successfully tested!!!!!!!!!1!!!!!SendToMessages is okay!}",
-        this.email
       );
     },
     checkFormValidity() {
