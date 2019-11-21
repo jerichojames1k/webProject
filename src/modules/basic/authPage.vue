@@ -46,7 +46,7 @@
                 <!-- NEEED FOOOORRR CHANNNNNNNNGE -->
                 <p>
                   I {{UpdateSenderNames}} hereby authorize {{UpdaterecNames}} permission to process and
-                  collect my {{UpdateauthDocument}} in my behalf. To expedite the process, I've included Identification
+                  collect my {{UpdateauthDocument}}in my behalf. To expedite the process, I've included Identification
                   information for verification needs.
                 </p>
               </b-card-text>
@@ -323,19 +323,19 @@ export default {
     return {
       show: false,
       shows: false,
-      UpdateauthDocument: "______________",
-      UpdateTypeofId: "[ID TYPE]",
-      UpdateIdNumber: "[ID Number]",
-      UpdateSenderNames: "_____________",
+      UpdateauthDocument:"______________",
+      UpdateTypeofId:"[ID TYPE]",
+      UpdateIdNumber:"[ID Number]",
+      UpdateSenderNames:"_____________",
       UpdateSenderName: "[SenderName]",
       UpdateyourAddress: "[Address]",
       Updatezip: "[State/ ZIP Code]",
       UpdatecurrentDate: "[Date]",
-      UpdatecurrentDates: "______________",
+      UpdatecurrentDates:"______________",
       UpdatedueDate: "[DueDate]",
-      UpdatedueDates: "_______________",
+      UpdatedueDates:"_______________",
       UpdaterecName: "[Recipients name]",
-      UpdaterecNames: "_______________",
+      UpdaterecNames:"_______________",
       UpdaterecAddress: "[Address]",
       UpdaterecZip: "[State/ ZIP Code]",
       Updatesubject: "[Subject]",
@@ -368,12 +368,11 @@ export default {
       if (!this.checkFormValidity()) {
         swal("No", "Please input all fields!", "Repeat");
         return;
-      } else {
-        console.log(
-          "{The modal is successfully tested!!!!!!!!authorization letter!!!!}"
-        );
+      }
+      else{
+      console.log("{The modal is successfully tested!!!!!!!!authorization letter!!!!}" );
         this.UpdateSenderName = this.SenderName;
-        this.UpdateSenderNames = this.SenderName;
+        this.UpdateSenderNames=this.SenderName;
         this.UpdateyourAddress = this.yourAddress;
         this.Updatezip = this.zip;
         this.UpdatecurrentDate = this.currentDate;
@@ -381,14 +380,14 @@ export default {
         this.UpdatedueDate = this.dueDate;
         this.UpdatedueDates = this.dueDate;
         this.UpdaterecName = this.recName;
-        this.UpdaterecNames = this.recName;
+        this.UpdaterecNames= this.recName;
         this.UpdaterecAddress = this.recAddress;
         this.UpdaterecZip = this.recZip;
         this.Updatesubject = this.subject;
         this.Updatedoc = this.doc;
-        this.UpdateauthDocument = this.doc;
-        this.UpdateTypeofId = this.IdentityId;
-        this.UpdateIdNumber = this.IDNUMBER;
+        this.UpdateauthDocument=this.doc;
+        this.UpdateTypeofId=this.IdentityId;
+        this.UpdateIdNumber=this.IDNUMBER;
         swal("yeah", "Successfully !", "Okay!");
         //BLANK THE AREA OR FIELD
         // this.SenderName =" ";

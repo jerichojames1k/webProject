@@ -191,7 +191,7 @@ export default {
   },
   methods: {
     Terms: function() {
-      //console.log("{The modal is successfully tested!!}");
+      console.log("{The modal is successfully tested!!}");
       swal("Yeah!", "Thanks for reading our Terms and Conditions", "Success!!");
     },
     PasswordToggleVisibility() {
