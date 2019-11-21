@@ -103,11 +103,11 @@
                   hide-header-close
                 >
                   <b>Iconnect Terms of Service ("Agreement")</b>
-                   <p>
+                  <p>
                     This Agreement was last modified on September 20, 2013.
                     Please read these Terms of Service completely using iconnectblog.com which is owned and operated by Iconnect. This Agreement documents the legally binding terms and conditions attached to the use of the Site at iconnectblog.com.
                     By using or accessing the Site in any way, viewing or browsing the Site, or adding your own content to the Site, you are agreeing to be bound by these Terms of Service.
-                   </p>
+                  </p>
                   <ul>
                     <b>Intellectual Property</b>
                     <p>The Site and all of its original content are the sole property of Iconnect and are, as such, fully protected by the appropriate international copyright and other intellectual property rights laws.</p>
