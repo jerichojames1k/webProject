@@ -55,12 +55,7 @@
                 :class="{ 'is-invalid': submitted && $v.form.password.$error }"
                 :type="passwordVisible ? 'text' : 'password'"
               ></b-form-input>
-              <span
-                id="pointer"
-                class="visibility"
-                tabindex="-1"
-                @click='PasswordToggleVisibility'
-              >
+              <span id="pointer" class="visibility" tabindex="-1" @click="PasswordToggleVisibility">
                 <i class="material-icons">{{ passwordVisible ? "Hide" : "Show" }}</i>
               </span>
 
@@ -94,7 +89,7 @@
                 <a
                   href="#"
                   v-b-modal.modal-scrollable
-                  @click="show=true"
+                  @click="TERMS=true"
                 >Terms & Conditions</a>
               </p>
               <div>
@@ -102,7 +97,10 @@
                   scrollable
                   title="Our Terms and Conditions"
                   id="modal-scrollable"
-                  v-model="show"
+                  v-model="TERMS"
+                  no-close-on-esc
+                  no-close-on-backdrop
+                  hide-header-close
                 >
                   <b>Iconnect Terms of Service ("Agreement")</b>
                   <p>
@@ -135,7 +133,7 @@
                         id="modal"
                         size="sm"
                         class="float-right"
-                        @click="show=false"
+                        @click="TERMS=false"
                         v-on:click="Terms"
                       >OK</b-button>
                     </div>
@@ -153,6 +151,7 @@
 </template>
 
 <script>
+import swal from "sweetalert";
 import AUTH from "services/auth";
 import { required, email, sameAs } from "vuelidate/lib/validators";
 var passwordHash = require("password-hash");
@@ -166,12 +165,12 @@ export default {
         password: "",
         confirmPassword: ""
       },
-      show:false,
+      show:true,
       passwordVisible: false,
-      submitted: false
+      submitted: false,
+      TERMS:false
     };
   },
-
   validations: {
     form: {
       username: { required },
@@ -190,12 +189,11 @@ export default {
       confirmPassword: { required, sameAsPassword: sameAs("password") }
     }
   },
-
   methods: {
-     Terms: function() {
-      console.log(
-        "{The modal is successfully tested!!}"
-      )},
+    Terms: function() {
+      //console.log("{The modal is successfully tested!!}");
+      swal("Yeah!", "Thanks for reading our Terms and Conditions", "Success!!");
+    },
     PasswordToggleVisibility() {
       this.passwordVisible = !this.passwordVisible;
     },
@@ -208,7 +206,6 @@ export default {
       var encryptPass = passwordHash.generate(this.form.password);
       var encryptEmail = passwordHash.generate(this.form.email);
       var encryptUserName = passwordHash.generate(this.form.username);
-
       this.$v.$touch();
       if (this.$v.$invalid) {
         return;
@@ -242,10 +239,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
 @import "~assets/color.scss";
-#modal{
-  background-color:#BB6BD9;
+#modal {
+  background-color: #bb6bd9;
 }
 #top {
   background-color: white;

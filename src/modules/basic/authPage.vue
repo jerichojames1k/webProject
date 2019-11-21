@@ -43,17 +43,28 @@
                 <b>To whom it may concern:</b>
               </b-card-text>
               <b-card-text class="side">
-                I {{Uname}} hereby authorize ________________ permission to process and
-                collect my ________________ in my behalf. To expedite the process, I've included Identification
-                information for verification needs.
+                <!-- NEEED FOOOORRR CHANNNNNNNNGE -->
+                <p>
+                  I {{UpdateSenderNames}} hereby authorize {{UpdaterecNames}} permission to process and
+                  collect my {{UpdateauthDocument}} in my behalf. To expedite the process, I've included Identification
+                  information for verification needs.
+                </p>
               </b-card-text>
-              <b-card-text>Authorized Person: [Recipient's name]</b-card-text>
-              <b-card-text>Identity Type: [Type of ID]</b-card-text>
-              <b-card-text>ID Number: [ID number]</b-card-text>
+              <b-card-text>
+                <p>Authorized Person:{{UpdaterecNames}}</p>
+              </b-card-text>
+              <b-card-text>
+                <p>Identity Type:{{UpdateTypeofId}}</p>
+              </b-card-text>
+              <b-card-text>
+                <p>ID Number:{{UpdateIdNumber}}</p>
+              </b-card-text>
               <b-card-text>
                 <p>Scoped of Authorization:{{Updatedoc}}</p>
               </b-card-text>
-              <b-card-text>The Permission to processes the documents in my name starts on ________________ and ends on ________________</b-card-text>
+              <b-card-text>
+                <p>The Permission to processes the documents in my name starts on {{UpdatecurrentDates}} and ends on {{UpdatedueDates}}.</p>
+              </b-card-text>
               <br />
 
               <b-card-text class="side">Sincerely,</b-card-text>
@@ -85,6 +96,11 @@
       @show="resetModal"
       @hidden="resetModal"
       @ok="handleOk"
+      no-close-on-esc
+      no-close-on-backdrop
+      hide-header-close
+      ok-variant="success"
+      cancel-variant="primary"
       v-model="show"
     >
       <form ref="form" @submit.stop.prevent="handleSubmit">
@@ -243,48 +259,55 @@
             placeholder="e.g Birth Certificate"
           ></b-form-input>
         </b-form-group>
+        <!-- TYPES OF IDENTITY ID -->
+        <b-form-group
+          :state="nameState"
+          label="Types of IdentityId"
+          label-for="IdentityId"
+          invalid-feedback="Type of IdentityId is required"
+        >
+          <b-form-input
+            class="borderColor"
+            id="IdentityId"
+            v-model="IdentityId"
+            :state="nameState"
+            required
+            placeholder="Please type your IdentityId "
+          ></b-form-input>
+        </b-form-group>
+        <!-- FOR THE ID NUMBER -->
+        <b-form-group
+          :state="nameState"
+          label="ID NUMBER"
+          label-for=" Id Number"
+          invalid-feedback="Type of  IdNumber is required"
+        >
+          <b-form-input
+            class="borderColor"
+            id="IdNumber"
+            v-model="IDNUMBER"
+            :state="nameState"
+            required
+            placeholder="Please type your IdNumber "
+          ></b-form-input>
+        </b-form-group>
       </form>
-      <template v-slot:modal-footer>
-        <div class="w-100">
-          <b-button
-            id="authorazationmodal"
-            size="sm"
-            class="float-right"
-            @click="show=false"
-            type="dark"
-            v-on:click="authorizationletter"
-          >OK</b-button>
-        </div>
-      </template>
     </b-modal>
 
-    <!-- Send To EMAIL TO A PERSON WITH GREAT -->
+    <!-- Send To -->
     <div>
-      <b-modal id="sendToModal" centered title="Recepient's Email" v-model="shows">
+      <b-modal id="sendToModal" centered title="Recepient's Email">
         <form>
           <b-form-group label="Email" label-for="email" invalid-feedback="Email is required">
             <b-form-input
               class="borderColor"
               id="email"
-              v-model="email"
               :state="nameState"
               required
-              placeholder="e.g you@gmail.com"
+              placeholder="you@gmail.com"
             ></b-form-input>
           </b-form-group>
         </form>
-        <template v-slot:modal-footer>
-          <div class="w-100">
-            <b-button
-              id="modal"
-              size="sm"
-              class="float-right"
-              @click="shows=false"
-              type="dark"
-              v-on:click="SendToMessage"
-            >OK</b-button>
-          </div>
-        </template>
       </b-modal>
     </div>
   </div>
@@ -292,6 +315,7 @@
 
 
 <script>
+import swal from "sweetalert";
 import ROUTER from "router";
 export default {
   name: "authForm",
@@ -299,16 +323,23 @@ export default {
     return {
       show: false,
       shows: false,
-      UpdateSenderName:'[SenderName]',
-      UpdateyourAddress:'[Address]',
-      Updatezip:'[State/ ZIP Code]',
-      UpdatecurrentDate:'[Date]',
-      UpdatedueDate:'[DueDate]',
-      UpdaterecName:'[Recipients name]',
-      UpdaterecAddress:'[Address]',
-      UpdaterecZip:'[State/ ZIP Code]',
+      UpdateauthDocument: "______________",
+      UpdateTypeofId: "[ID TYPE]",
+      UpdateIdNumber: "[ID Number]",
+      UpdateSenderNames: "_____________",
+      UpdateSenderName: "[SenderName]",
+      UpdateyourAddress: "[Address]",
+      Updatezip: "[State/ ZIP Code]",
+      UpdatecurrentDate: "[Date]",
+      UpdatecurrentDates: "______________",
+      UpdatedueDate: "[DueDate]",
+      UpdatedueDates: "_______________",
+      UpdaterecName: "[Recipients name]",
+      UpdaterecNames: "_______________",
+      UpdaterecAddress: "[Address]",
+      UpdaterecZip: "[State/ ZIP Code]",
       Updatesubject: "[Subject]",
-      Updatedoc:'[DOCS]',
+      Updatedoc: "[DOCS]",
       nameState: null,
       submittedNames: [],
       modalShow: false
@@ -316,26 +347,6 @@ export default {
   },
   component: {},
   methods: {
-    authorizationletter: function() {
-      console.log(
-        "{The modal is successfully tested!!!!!!!!authorization letter!!!!}"
-      );  
-     this.UpdateSenderName=this.SenderName,
-     this.UpdateyourAddress=this.yourAddress,
-     this.Updatezip=this.zip,
-     this.UpdatecurrentDate=this.currentDate,
-     this.UpdatedueDate=this.dueDate,
-     this.UpdaterecName =this.recName,
-     this.UpdaterecAddress=this.recAddress,
-     this.UpdaterecZip=this.recZip,
-     this.Updatesubject =this.subject,
-     this.Updatedoc=this.doc
-    },
-    SendToMessage: function() {
-      console.log(
-        "{The modal is successfully tested!!!!!!!!!1!!!!!SendToMessages is okay!}",
-      );
-    },
     checkFormValidity() {
       const valid = this.$refs.form.checkValidity();
       this.nameState = valid ? "valid" : "invalid";
@@ -350,14 +361,49 @@ export default {
       bvModalEvt.preventDefault();
       // Trigger submit handler
       this.handleSubmit();
+      //replace data
     },
     handleSubmit() {
       // Exit when the form isn't valid
       if (!this.checkFormValidity()) {
+        swal("No", "Please input all fields!", "Repeat");
         return;
+      } else {
+        console.log(
+          "{The modal is successfully tested!!!!!!!!authorization letter!!!!}"
+        );
+        this.UpdateSenderName = this.SenderName;
+        this.UpdateSenderNames = this.SenderName;
+        this.UpdateyourAddress = this.yourAddress;
+        this.Updatezip = this.zip;
+        this.UpdatecurrentDate = this.currentDate;
+        this.UpdatecurrentDates = this.currentDate;
+        this.UpdatedueDate = this.dueDate;
+        this.UpdatedueDates = this.dueDate;
+        this.UpdaterecName = this.recName;
+        this.UpdaterecNames = this.recName;
+        this.UpdaterecAddress = this.recAddress;
+        this.UpdaterecZip = this.recZip;
+        this.Updatesubject = this.subject;
+        this.Updatedoc = this.doc;
+        this.UpdateauthDocument = this.doc;
+        this.UpdateTypeofId = this.IdentityId;
+        this.UpdateIdNumber = this.IDNUMBER;
+        swal("yeah", "Successfully !", "Okay!");
+        //BLANK THE AREA OR FIELD
+        // this.SenderName =" ";
+        // this.yourAddress =" ";
+        // this.zip =" ";
+        // this.currentDate =" ";
+        // this.dueDate =" ";
+        // this.recName =" ";
+        // this.recAddress =" ";
+        // this.recZip =" ";
+        // this.subject =" ";
+        // this.doc =" ";
       }
       // Push the name to submitted names
-      this.submittedNames.push(this.yourName);
+      //this.submittedNames.push(this.yourName);
       // Hide the modal manually
       this.$nextTick(() => {
         this.$refs.modal.hide();
@@ -368,12 +414,6 @@ export default {
 </script>
 <style lang='scss' scoped>
 @import "~assets/color.scss";
-#authorazationmodal {
-  background-color: #bb6bd9;
-}
-#modal {
-  background-color: #bb6bd9;
-}
 #authPage {
   margin-top: 6%;
 }
