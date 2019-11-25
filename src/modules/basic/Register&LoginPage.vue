@@ -151,7 +151,7 @@
 </template>
 
 <script>
-import swal from "sweetalert";
+import swal from "sweetalertS";
 import AUTH from "services/auth";
 import { required, email, sameAs } from "vuelidate/lib/validators";
 var passwordHash = require("password-hash");
