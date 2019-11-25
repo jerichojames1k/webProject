@@ -80,7 +80,7 @@
           <br />
           <div>
             <b-button v-b-modal.modalForm id="fillUp" @click="show=true">Fill Up</b-button>
-            <b-button v-b-modal.sendToModal id="sendTo" @click="shows=true">Send To</b-button>
+            <b-button v-b-modal.sendToModal id="sendTo" @click="shows=true"   v-on:click="generateTrackNumber()">Send To</b-button>
           </div>
         </b-col>
         <b-col cols="1"></b-col>
@@ -302,6 +302,7 @@
             <b-form-input
               class="borderColor"
               id="email"
+               v-model="TrackingNumber"
               :state="nameState"
               required
               placeholder="you@gmail.com"
@@ -315,7 +316,8 @@
 
 
 <script>
-import swal from "sweetalert";
+import swal from "sweetalerts";
+import Swal from 'sweetalert2'
 import ROUTER from "router";
 export default {
   name: "authForm",
@@ -340,6 +342,7 @@ export default {
       UpdaterecZip: "[State/ ZIP Code]",
       Updatesubject: "[Subject]",
       Updatedoc: "[DOCS]",
+      TrackingNumber:'',
       nameState: null,
       submittedNames: [],
       modalShow: false
@@ -347,6 +350,18 @@ export default {
   },
   component: {},
   methods: {
+    generateTrackNumber: function(){
+       //swal("Yeah!",Math.floor(1000 + Math.random() * 9000).toString(),"Success!!");
+      //this.TrackingNumber=Math.floor(1000 + Math.random() * 9000);
+      //console.log("Tracking id:"+Math.floor(1000 + Math.random() * 9000))
+      Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Your work has been saved',
+              showConfirmButton: false,
+              timer: 3500
+            })
+    },
     checkFormValidity() {
       const valid = this.$refs.form.checkValidity();
       this.nameState = valid ? "valid" : "invalid";
