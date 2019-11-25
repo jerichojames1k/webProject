@@ -316,7 +316,7 @@
 
 
 <script>
-import swal from "sweetalert";
+import swal from "sweetalerts";
 import Swal from 'sweetalert2'
 import ROUTER from "router";
 export default {
