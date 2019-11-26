@@ -329,10 +329,12 @@ export default {
   component: {},
   methods: {
     generateTrackNumber: function(){
-      const randomLetter = ('ABCDEFGHIJKLMNOPQRSTUVWXYZ').split('')[(Math.floor(Math.random() * 26 ))];
-      const randomLetters = ('ABCDEFGHIJKLMNOPQRSTUVWXYZ').split('')[(Math.floor(Math.random() * 26 ))];
-      this.TrackingNumber=Math.floor(100000000000 + Math.random() * 900000000000).toString()+"-"+randomLetter+randomLetter;
-      console.log("trackingnumber:"+this.TrackingNumber)
+      const a= ('ABCDEFGHIJKL').split('')[(Math.floor(Math.random() * 12 ))];
+      const b= ('MNOPQRSTUVWXYZ').split('')[(Math.floor(Math.random() *14 ))];
+      var tracknum1=Math.floor(10 + Math.random() *20).toString()
+      var tracknum2=Math.floor(50 + Math.random() * 90).toString()
+      this.TrackingNumber=tracknum1+"-"+(a+b)+"-"+tracknum2+"-"+(a+b)+"-"+tracknum1+"-"+(a+b);
+      console.log("trackingnumber:"+trackingnumber)
     },
     checkFormValidity() {
       const valid = this.$refs.form.checkValidity();
@@ -356,7 +358,7 @@ export default {
       this.IDNUMBER="";
     },
     GOTOACTIVITIES(){
-       console.log("go to activities!!!!!")
+       console.log("This will go to activities!!!!!")
     },
     handleOk(bvModalEvt) {
       // Prevent modal from closing

@@ -151,7 +151,7 @@
 </template>
 
 <script>
-import swal from "sweetalert";
+// import swal from "sweetalert";
 import AUTH from "services/auth";
 import { required, email, sameAs } from "vuelidate/lib/validators";
 var passwordHash = require("password-hash");
@@ -191,8 +191,7 @@ export default {
   },
   methods: {
     Terms: function() {
-      console.log("{The modal is successfully tested!!}");
-      swal("Yeah!", "Thanks for reading our Terms and Conditions", "Success!!");
+      console.log("{The modal is successfully tested!!}")
     },
     PasswordToggleVisibility() {
       this.passwordVisible = !this.passwordVisible;
