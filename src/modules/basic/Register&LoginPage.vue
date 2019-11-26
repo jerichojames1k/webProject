@@ -89,7 +89,7 @@
                 <a
                   href="#"
                   v-b-modal.modal-scrollable
-                  @click="show=true"
+                  @click="TERMS=true"
                 >Terms & Conditions</a>
               </p>
               <div>
@@ -97,7 +97,7 @@
                   scrollable
                   title="Our Terms and Conditions"
                   id="modal-scrollable"
-                  v-model="show"
+                  v-model="TERMS"
                   no-close-on-esc
                   no-close-on-backdrop
                   hide-header-close
@@ -133,7 +133,7 @@
                         id="modal"
                         size="sm"
                         class="float-right"
-                        @click="show=false"
+                        @click="TERMS=false"
                         v-on:click="Terms"
                       >OK</b-button>
                     </div>
@@ -151,6 +151,7 @@
 </template>
 
 <script>
+import swal from "sweetalertS";
 import AUTH from "services/auth";
 import { required, email, sameAs } from "vuelidate/lib/validators";
 var passwordHash = require("password-hash");
@@ -164,9 +165,10 @@ export default {
         password: "",
         confirmPassword: ""
       },
-      show: false,
+      show:true,
       passwordVisible: false,
-      submitted: false
+      submitted: false,
+      TERMS:false
     };
   },
   validations: {
@@ -190,6 +192,7 @@ export default {
   methods: {
     Terms: function() {
       console.log("{The modal is successfully tested!!}");
+      swal("Yeah!", "Thanks for reading our Terms and Conditions", "Success!!");
     },
     PasswordToggleVisibility() {
       this.passwordVisible = !this.passwordVisible;

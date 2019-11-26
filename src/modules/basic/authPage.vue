@@ -46,7 +46,11 @@
                 <!-- NEEED FOOOORRR CHANNNNNNNNGE -->
                 <p>
                   I {{UpdateSenderNames}} hereby authorize {{UpdaterecNames}} permission to process and
+<<<<<<< HEAD
                   collect my {{UpdateauthDocument}} in my behalf. To expedite the process, I've included Identification
+=======
+                  collect my {{UpdateauthDocument}}in my behalf. To expedite the process, I've included Identification
+>>>>>>> 8ba1443981389261bd1f878a8fe5fe9137e69ea9
                   information for verification needs.
                 </p>
               </b-card-text>
@@ -80,7 +84,11 @@
           <br />
           <div>
             <b-button v-b-modal.modalForm id="fillUp" @click="show=true">Fill Up</b-button>
+<<<<<<< HEAD
             <b-button v-b-modal.sendToModal id="sendTo" @click="shows=true"   v-on:click="generateTrackNumber()" >Send To</b-button>
+=======
+            <b-button v-b-modal.sendToModal id="sendTo" @click="shows=true"   v-on:click="generateTrackNumber()">Send To</b-button>
+>>>>>>> 8ba1443981389261bd1f878a8fe5fe9137e69ea9
           </div>
         </b-col>
         <b-col cols="1"></b-col>
@@ -241,6 +249,10 @@
         </b-form-group>
         <!-- TYPES OF IDENTITY ID -->
         <b-form-group
+<<<<<<< HEAD
+=======
+          :state="nameState"
+>>>>>>> 8ba1443981389261bd1f878a8fe5fe9137e69ea9
           label="Types of IdentityId"
           label-for="IdentityId"
           invalid-feedback="Type of IdentityId is required"
@@ -249,12 +261,21 @@
             class="borderColor"
             id="IdentityId"
             v-model="IdentityId"
+<<<<<<< HEAD
+=======
+            :state="nameState"
+>>>>>>> 8ba1443981389261bd1f878a8fe5fe9137e69ea9
             required
             placeholder="Please type your IdentityId "
           ></b-form-input>
         </b-form-group>
         <!-- FOR THE ID NUMBER -->
+<<<<<<< HEAD
         <b-form-group 
+=======
+        <b-form-group
+          :state="nameState"
+>>>>>>> 8ba1443981389261bd1f878a8fe5fe9137e69ea9
           label="ID NUMBER"
           label-for=" Id Number"
           invalid-feedback="Type of  IdNumber is required"
@@ -262,7 +283,12 @@
           <b-form-input
             class="borderColor"
             id="IdNumber"
+<<<<<<< HEAD
             v-model="IDNUMBER"       
+=======
+            v-model="IDNUMBER"
+            :state="nameState"
+>>>>>>> 8ba1443981389261bd1f878a8fe5fe9137e69ea9
             required
             placeholder="Please type your IdNumber "
           ></b-form-input>
@@ -276,7 +302,20 @@
       no-close-on-backdrop
       hide-header-close>
         <form>
+<<<<<<< HEAD
          <p>{{TrackingNumber}}</p>
+=======
+          <b-form-group label="Email" label-for="email" invalid-feedback="Email is required">
+            <b-form-input
+              class="borderColor"
+              id="email"
+               v-model="TrackingNumber"
+              :state="nameState"
+              required
+              placeholder="you@gmail.com"
+            ></b-form-input>
+          </b-form-group>
+>>>>>>> 8ba1443981389261bd1f878a8fe5fe9137e69ea9
         </form>
       </b-modal>
     </div>
@@ -285,8 +324,13 @@
 
 
 <script>
+<<<<<<< HEAD
 // import swal from "sweetalerts";
 // import Swal from 'sweetalert2'
+=======
+import swal from "sweetalerts";
+import Swal from 'sweetalert2'
+>>>>>>> 8ba1443981389261bd1f878a8fe5fe9137e69ea9
 import ROUTER from "router";
 export default {
   name: "authForm",
@@ -311,6 +355,7 @@ export default {
       UpdaterecZip: "[State/ ZIP Code]",
       Updatesubject: "[Subject]",
       Updatedoc: "[DOCS]",
+<<<<<<< HEAD
       TrackingNumber:" ",
       SenderName:"",
       yourAddress:"",
@@ -324,15 +369,34 @@ export default {
       doc:"",
       IdentityId:"",
       IDNUMBER:""
+=======
+      TrackingNumber:'',
+      nameState: null,
+      submittedNames: [],
+      modalShow: false
+>>>>>>> 8ba1443981389261bd1f878a8fe5fe9137e69ea9
     };
   },
   component: {},
   methods: {
     generateTrackNumber: function(){
+<<<<<<< HEAD
       const randomLetter = ('ABCDEFGHIJKLMNOPQRSTUVWXYZ').split('')[(Math.floor(Math.random() * 26 ))];
       const randomLetters = ('ABCDEFGHIJKLMNOPQRSTUVWXYZ').split('')[(Math.floor(Math.random() * 26 ))];
       this.TrackingNumber=Math.floor(100000000000 + Math.random() * 900000000000).toString()+"-"+randomLetter+randomLetters+"-"+randomLetter+randomLetters;
       console.log("trackingnumber:"+this.TrackingNumber)
+=======
+       //swal("Yeah!",Math.floor(1000 + Math.random() * 9000).toString(),"Success!!");
+      //this.TrackingNumber=Math.floor(1000 + Math.random() * 9000);
+      //console.log("Tracking id:"+Math.floor(1000 + Math.random() * 9000))
+      Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Your work has been saved',
+              showConfirmButton: false,
+              timer: 3500
+            })
+>>>>>>> 8ba1443981389261bd1f878a8fe5fe9137e69ea9
     },
     checkFormValidity() {
       const valid = this.$refs.form.checkValidity();
@@ -368,10 +432,15 @@ export default {
     handleSubmit() {
       // Exit when the form isn't valid
       if (!this.checkFormValidity()) {
+        swal("No", "Please input all fields!", "Repeat");
         return;
       }
       else{
+<<<<<<< HEAD
       console.log("{The modal is successfully tested authorization letter!!!!}" )
+=======
+      console.log("{The modal is successfully tested!!!!!!!!authorization letter!!!!}" );
+>>>>>>> 8ba1443981389261bd1f878a8fe5fe9137e69ea9
         this.UpdateSenderName = this.SenderName;
         this.UpdateSenderNames=this.SenderName;
         this.UpdateyourAddress = this.yourAddress;
@@ -389,6 +458,21 @@ export default {
         this.UpdateauthDocument=this.doc;
         this.UpdateTypeofId=this.IdentityId;
         this.UpdateIdNumber=this.IDNUMBER;
+<<<<<<< HEAD
+=======
+        swal("yeah", "Successfully !", "Okay!");
+        //BLANK THE AREA OR FIELD
+        // this.SenderName =" ";
+        // this.yourAddress =" ";
+        // this.zip =" ";
+        // this.currentDate =" ";
+        // this.dueDate =" ";
+        // this.recName =" ";
+        // this.recAddress =" ";
+        // this.recZip =" ";
+        // this.subject =" ";
+        // this.doc =" ";
+>>>>>>> 8ba1443981389261bd1f878a8fe5fe9137e69ea9
       }
       // Hide the modal manually
       this.$nextTick(() => {
