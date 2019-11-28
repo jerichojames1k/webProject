@@ -329,12 +329,17 @@ export default {
   component: {},
   methods: {
     generateTrackNumber: function(){
-      const a= ('ABCDEFGHIJKL').split('')[(Math.floor(Math.random() * 12 ))];
-      const b= ('MNOPQRSTUVWXYZ').split('')[(Math.floor(Math.random() *14 ))];
-      var tracknum1=Math.floor(10 + Math.random() *20).toString()
-      var tracknum2=Math.floor(50 + Math.random() * 90).toString()
-      this.TrackingNumber=tracknum1+"-"+(a+b)+"-"+tracknum2+"-"+(a+b)+"-"+tracknum1+"-"+(a+b);
-      console.log("trackingnumber:"+trackingnumber)
+      const a= ('ABCD').split('')[(Math.floor(Math.random() *4))]
+      const b= ('EFGH').split('')[(Math.floor(Math.random() *4))]
+      const c= ('IJKL').split('')[(Math.floor(Math.random() *4))]
+      const d= ('MNOP').split('')[(Math.floor(Math.random() *4))]
+      const e= ('QRST').split('')[(Math.floor(Math.random() *4))]
+      const f= ('UVWXYZ').split('')[(Math.floor(Math.random() *6))]
+      var tracknum1=Math.floor(10 + Math.random() *90).toString()
+      var tracknum2=Math.floor(10 + Math.random() *90).toString()
+      var tracknum3=Math.floor(10 + Math.random() *90).toString()
+      this.TrackingNumber=tracknum1+"-"+(a+b)+"-"+tracknum2+"-"+(c+d)+"-"+tracknum3+"-"+(e+f)
+      console.log("trackingnumber:"+this.TrackingNumber)
     },
     checkFormValidity() {
       const valid = this.$refs.form.checkValidity();
@@ -358,7 +363,7 @@ export default {
       this.IDNUMBER="";
     },
     GOTOACTIVITIES(){
-       console.log("This will go to activities!!!!!")
+       console.log("This will go to Activities or Notifications!")
     },
     handleOk(bvModalEvt) {
       // Prevent modal from closing
@@ -373,7 +378,7 @@ export default {
         return;
       }
       else{
-      console.log("{The modal is successfully tested authorization letter!!!!}" )
+      console.log("{The modal is successfully tested  for fill-up in authorization letter!}" )
         this.UpdateSenderName = this.SenderName;
         this.UpdateSenderNames=this.SenderName;
         this.UpdateyourAddress = this.yourAddress;
