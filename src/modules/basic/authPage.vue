@@ -80,7 +80,12 @@
           <br />
           <div>
             <b-button v-b-modal.modalForm id="fillUp" @click="show=true">Fill Up</b-button>
-            <b-button v-b-modal.sendToModal id="sendTo" @click="shows=true"   v-on:click="generateTrackNumber()" >Send To</b-button>
+            <b-button
+              v-b-modal.sendToModal
+              id="sendTo"
+              @click="shows=true"
+              v-on:click="generateTrackNumber()"
+            >Send</b-button>
           </div>
         </b-col>
         <b-col cols="1"></b-col>
@@ -107,7 +112,6 @@
         <!-- Sender's Credentials -->
         <b-form-group
           label="Sender's Full Name"
-          label-for="yourName"
           invalid-feedback="Sender's Full Name is required"
         >
           <b-form-input
@@ -120,7 +124,6 @@
         </b-form-group>
         <b-form-group
           label="Sender's Address"
-          label-for="yourAddress"
           invalid-feedback="Address is required"
         >
           <b-form-input
@@ -133,7 +136,6 @@
         </b-form-group>
         <b-form-group
           label="Sender's State/ZIP Code"
-          label-for="zip"
           invalid-feedback="State/Zip Code is required"
         >
           <b-form-input
@@ -147,7 +149,6 @@
         <!-- Date from & Date to -->
         <b-form-group
           label="Current Date"
-          label-for="currentDate"
           invalid-feedback="Date is required"
         >
           <b-form-input
@@ -158,11 +159,7 @@
             placeholder="Current Date"
           ></b-form-input>
         </b-form-group>
-        <b-form-group
-          label="Due Date"
-          label-for="dueDate"
-          invalid-feedback="Date is required"
-        >
+        <b-form-group label="Due Date" label-for="dueDate" invalid-feedback="Date is required">
           <b-form-input
             class="borderColor"
             id="dueDate"
@@ -174,7 +171,6 @@
         <!-- Recipient's Credentials -->
         <b-form-group
           label="Recipient's Full Name"
-          label-for="recName"
           invalid-feedback="Recipient's Full Name is required"
         >
           <b-form-input
@@ -187,7 +183,6 @@
         </b-form-group>
         <b-form-group
           label="Recipient's Address"
-          label-for="recAddress"
           invalid-feedback="Recipient's Address is required"
         >
           <b-form-input
@@ -200,7 +195,6 @@
         </b-form-group>
         <b-form-group
           label="Recipient's State/ZIP Code"
-          label-for="recZip"
           invalid-feedback="Recipient's State/Zip Code is required"
         >
           <b-form-input
@@ -212,11 +206,7 @@
           ></b-form-input>
         </b-form-group>
         <!-- Subject -->
-        <b-form-group
-          label="Subject"
-          label-for="subject"
-          invalid-feedback="Subject is required"
-        >
+        <b-form-group label="Subject" label-for="subject" invalid-feedback="Subject is required">
           <b-form-input
             class="borderColor"
             id="subject"
@@ -228,7 +218,6 @@
         <!-- Types of Documents -->
         <b-form-group
           label="Types of Document/s"
-          label-for="doc"
           invalid-feedback="Type of Document is required"
         >
           <b-form-input
@@ -242,7 +231,6 @@
         <!-- TYPES OF IDENTITY ID -->
         <b-form-group
           label="Types of IdentityId"
-          label-for="IdentityId"
           invalid-feedback="Type of IdentityId is required"
         >
           <b-form-input
@@ -254,15 +242,14 @@
           ></b-form-input>
         </b-form-group>
         <!-- FOR THE ID NUMBER -->
-        <b-form-group 
+        <b-form-group
           label="ID NUMBER"
-          label-for=" Id Number"
           invalid-feedback="Type of  IdNumber is required"
         >
           <b-form-input
             class="borderColor"
             id="IdNumber"
-            v-model="IDNUMBER"       
+            v-model="IDNUMBER"
             required
             placeholder="Please type your IdNumber "
           ></b-form-input>
@@ -272,11 +259,18 @@
 
     <!-- Send To -->
     <div>
-      <b-modal id="sendToModal" centered title="Tracking Number" ok-only @ok="GOTOACTIVITIES" no-close-on-esc
-      no-close-on-backdrop
-      hide-header-close>
+      <b-modal
+        id="sendToModal"
+        centered
+        title="Tracking Number"
+        ok-only
+        @ok="GOTOACTIVITIES"
+        no-close-on-esc
+        no-close-on-backdrop
+        hide-header-close
+      >
         <form>
-         <p>{{TrackingNumber}}</p>
+          <p>{{TrackingNumber}}</p>
         </form>
       </b-modal>
     </div>
@@ -294,76 +288,87 @@ export default {
     return {
       show: false,
       shows: false,
-      UpdateauthDocument:"______________",
-      UpdateTypeofId:"[ID TYPE]",
-      UpdateIdNumber:"[ID Number]",
-      UpdateSenderNames:"_____________",
+      UpdateauthDocument: "______________",
+      UpdateTypeofId: "[ID TYPE]",
+      UpdateIdNumber: "[ID Number]",
+      UpdateSenderNames: "_____________",
       UpdateSenderName: "[SenderName]",
       UpdateyourAddress: "[Address]",
       Updatezip: "[State/ ZIP Code]",
       UpdatecurrentDate: "[Date]",
-      UpdatecurrentDates:"______________",
+      UpdatecurrentDates: "______________",
       UpdatedueDate: "[DueDate]",
-      UpdatedueDates:"_______________",
+      UpdatedueDates: "_______________",
       UpdaterecName: "[Recipients name]",
-      UpdaterecNames:"_______________",
+      UpdaterecNames: "_______________",
       UpdaterecAddress: "[Address]",
       UpdaterecZip: "[State/ ZIP Code]",
       Updatesubject: "[Subject]",
       Updatedoc: "[DOCS]",
-      TrackingNumber:" ",
-      SenderName:"",
-      yourAddress:"",
-      zip:"",
-      currentDate:"",
-      dueDate:"",
-      recName:"",
-      recAddress:"",
-      recZip:"",
-      subject:"",
-      doc:"",
-      IdentityId:"",
-      IDNUMBER:""
+      TrackingNumber: " ",
+      SenderName: "",
+      yourAddress: "",
+      zip: "",
+      currentDate: "",
+      dueDate: "",
+      recName: "",
+      recAddress: "",
+      recZip: "",
+      subject: "",
+      doc: "",
+      IdentityId: "",
+      IDNUMBER: ""
     };
   },
   component: {},
   methods: {
-    generateTrackNumber: function(){
-      const a= ('ABCD').split('')[(Math.floor(Math.random() *4))]
-      const b= ('EFGH').split('')[(Math.floor(Math.random() *4))]
-      const c= ('IJKL').split('')[(Math.floor(Math.random() *4))]
-      const d= ('MNOP').split('')[(Math.floor(Math.random() *4))]
-      const e= ('QRST').split('')[(Math.floor(Math.random() *4))]
-      const f= ('UVWXYZ').split('')[(Math.floor(Math.random() *6))]
-      var tracknum1=Math.floor(10 + Math.random() *90).toString()
-      var tracknum2=Math.floor(10 + Math.random() *90).toString()
-      var tracknum3=Math.floor(10 + Math.random() *90).toString()
-      this.TrackingNumber=tracknum1+"-"+(a+b)+"-"+tracknum2+"-"+(c+d)+"-"+tracknum3+"-"+(e+f)
-      console.log("trackingnumber:"+this.TrackingNumber)
+    generateTrackNumber: function() {
+      const a = "ABCD".split("")[Math.floor(Math.random() * 4)];
+      const b = "EFGH".split("")[Math.floor(Math.random() * 4)];
+      const c = "IJKL".split("")[Math.floor(Math.random() * 4)];
+      const d = "MNOP".split("")[Math.floor(Math.random() * 4)];
+      const e = "QRST".split("")[Math.floor(Math.random() * 4)];
+      const f = "UVWXYZ".split("")[Math.floor(Math.random() * 6)];
+      var tracknum1 = Math.floor(10 + Math.random() * 90).toString();
+      var tracknum2 = Math.floor(10 + Math.random() * 90).toString();
+      var tracknum3 = Math.floor(10 + Math.random() * 90).toString();
+      this.TrackingNumber =
+        tracknum1 +
+        "-" +
+        (a + b) +
+        "-" +
+        tracknum2 +
+        "-" +
+        (c + d) +
+        "-" +
+        tracknum3 +
+        "-" +
+        (e + f);
+      console.log("trackingnumber:" + this.TrackingNumber);
     },
     checkFormValidity() {
       const valid = this.$refs.form.checkValidity();
       return valid;
     },
     resetModal() {
-      this.SenderName="";
-      this.yourAddress="";
-      this.zip="";
-      this.currentDate="";
-      this.currentDate="";
-      this.dueDate="";
-      this.dueDate="";
-      this.recName="";
-      this.recName="";
-      this.recAddress="";
-      this.recZip="";
-      this.subject="";
-      this.doc="";
-      this.IdentityId="";
-      this.IDNUMBER="";
+      this.SenderName = "";
+      this.yourAddress = "";
+      this.zip = "";
+      this.currentDate = "";
+      this.currentDate = "";
+      this.dueDate = "";
+      this.dueDate = "";
+      this.recName = "";
+      this.recName = "";
+      this.recAddress = "";
+      this.recZip = "";
+      this.subject = "";
+      this.doc = "";
+      this.IdentityId = "";
+      this.IDNUMBER = "";
     },
-    GOTOACTIVITIES(){
-       console.log("This will go to Activities or Notifications!")
+    GOTOACTIVITIES() {
+      console.log("This will go to Activities or Notifications!");
     },
     handleOk(bvModalEvt) {
       // Prevent modal from closing
@@ -376,11 +381,12 @@ export default {
       // Exit when the form isn't valid
       if (!this.checkFormValidity()) {
         return;
-      }
-      else{
-      console.log("{The modal is successfully tested  for fill-up in authorization letter!}" )
+      } else {
+        console.log(
+          "{The modal is successfully tested  for fill-up in authorization letter!}"
+        );
         this.UpdateSenderName = this.SenderName;
-        this.UpdateSenderNames=this.SenderName;
+        this.UpdateSenderNames = this.SenderName;
         this.UpdateyourAddress = this.yourAddress;
         this.Updatezip = this.zip;
         this.UpdatecurrentDate = this.currentDate;
@@ -388,14 +394,14 @@ export default {
         this.UpdatedueDate = this.dueDate;
         this.UpdatedueDates = this.dueDate;
         this.UpdaterecName = this.recName;
-        this.UpdaterecNames= this.recName;
+        this.UpdaterecNames = this.recName;
         this.UpdaterecAddress = this.recAddress;
         this.UpdaterecZip = this.recZip;
         this.Updatesubject = this.subject;
         this.Updatedoc = this.doc;
-        this.UpdateauthDocument=this.doc;
-        this.UpdateTypeofId=this.IdentityId;
-        this.UpdateIdNumber=this.IDNUMBER;
+        this.UpdateauthDocument = this.doc;
+        this.UpdateTypeofId = this.IdentityId;
+        this.UpdateIdNumber = this.IDNUMBER;
       }
       // Hide the modal manually
       this.$nextTick(() => {

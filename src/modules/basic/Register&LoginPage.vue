@@ -58,6 +58,7 @@
               <span id="pointer" class="visibility" tabindex="-1" @click="PasswordToggleVisibility">
                 <i class="material-icons">{{ passwordVisible ? "Hide" : "Show" }}</i>
               </span>
+
               <div v-if="submitted && $v.form.password.$error" class="invalid-feedback">
                 <span v-if="!$v.form.password.required">Password is required</span>
                 <span v-if="!$v.form.password.minLength">Weak Password</span>
